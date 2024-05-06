@@ -1,11 +1,13 @@
 <template>
-  <img alt="Vue logo" src="./assets/lynn_banner.jpg">
+  <!-- <img alt="Vue logo" src="./assets/lynn_banner.jpg"> -->
   <DashboardComponent msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
 import DashboardComponent from './components/DashboardComponent.vue'
 import 'bulma/css/bulma.css'
+import '@fortawesome/fontawesome-free/css/all.css'
+
 
 export default {
   name: 'App',

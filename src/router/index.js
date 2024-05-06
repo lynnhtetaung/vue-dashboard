@@ -3,6 +3,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import RegisterComponent from '@/components/RegisterComponent';
 import ProfileComponent from '@/components/ProfileComponent.vue';
+import InvoiceComponent from '@/components/invoice/InvoiceComponent.vue';
+
 import { useAuth } from '../services/auth';
 
 const { state } = useAuth();
@@ -16,6 +18,11 @@ const routes = [
     path: '/home',
     name: 'ProfileComponent',
     component: ProfileComponent,
+  },
+  {
+    path: '/invoice',
+    name: 'InvoiceComponent',
+    component: InvoiceComponent,
   },
   {
     path: '/register',
