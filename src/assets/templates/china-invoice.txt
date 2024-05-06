@@ -1,0 +1,28 @@
+{{companyName}}
+
+TO
+{{toCompanyName}}
+
+PROFORMA INVOICE
+
+INVOICE NO: {{toCompanyName}}
+DATE: {{toCompanyName}}
+
+Items:
+{{#items}}
+- NO: {{ no }} | Description: {{ description }} | Unit: {{ unit }} | Unit Price: {{ unitPrice }} | Quantity: {{ quantity }} | Total: {{ total }}
+{{/items}}
+
+COUNTRY OF ORIGINAL {{countryOfOriginal}}
+
+PORT OF DISTINATION {{portOfDistination}}
+
+PLACE OF DISCHARGE {{placeOfDischarge}}
+MODE OF TRANSPORT {{modeOfTransport}}
+SHIPMENT {{shipment}}
+BY SEA(OR)AIR
+TERM OF TRADE {{termOfTrade}}
+TERM OF PAYMENT {{termOfPayment}}
+RECEIVER BANK NAME {{receiverBankName}}
+BANK OF CHINA {{bankOfChina}}
+ACOUNT NUMBER {{accountNumber}}
