@@ -1,9 +1,11 @@
 <template>
   <div class="header">
     <nav>
-      <ul :class="{ 'open': isMenuOpen }" class="menu"> <!-- Apply 'open' class when menu is open -->
-        <li><router-link to="/">Home |</router-link></li>
-        <li><router-link to="/register">Register</router-link></li>
+      <ul :class="{ 'open': isMenuOpen }" class="menu" style="text-align: center;"> <!-- Apply 'open' class when menu is open -->
+        <li class="is-size-5">
+          <router-link to="/">Home</router-link>
+        </li>
+        <!-- <li class="is-size-5"><router-link to="/register"> Register</router-link></li> -->
         <!-- Add more navigation links as needed -->
       </ul>
     </nav>

@@ -31,8 +31,8 @@
         setTimeout(() => {
           // Replace this with your actual user data
           this.user = {
-            name: 'John Doe',
-            email: 'john@example.com'
+            name: 'Pwint Thiri Khin',
+            email: 'gracethirikhin13@gmail.com'
             // Add more user information fields as needed
           };
         }, 1000); // Simulated delay of 1 second

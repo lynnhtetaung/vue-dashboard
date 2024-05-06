@@ -4,10 +4,10 @@
         <br><br>
         <div class="columns">
             <div class="column">
-                <label for="country-of-origin" class="label is-size-5 is-uppercase">Country of Origina</label>
+                <label for="country-of-origin" class="label is-size-5 is-uppercase">Country of Original</label>
             </div>
             <div class="column">
-                <textarea class="textarea is-medium" id="country-of-origin" v-model="countryOfOrigin" rows="3"></textarea>
+                <textarea class="textarea is-medium" id="country-of-origin" v-model="countryOfOriginal" rows="3"></textarea>
             </div>
         </div>
 
@@ -52,7 +52,7 @@
                             <!-- Options for mode of transport -->
                             <option value="air">Air</option>
                             <option value="sea">Sea</option>
-                            <option value="land">Land</option>
+                            <option value="land">Road</option>
                             <option value="seaorair">Sea Or Air</option>
                             <!-- Add more options as needed -->
                         </select>
@@ -64,7 +64,7 @@
         <!-- Add more fields as needed -->
         <div class="columns">
             <div class="column">
-                <label for="shipment" class="label is-size-5 is-uppercase"	>Shipment</label>
+                <label for="shipment" class="label is-size-5 is-uppercase">Shipment</label>
             </div>
             <div class="column">
                 <div class="select is-info is-medium" style="width: 100%;">
@@ -80,7 +80,7 @@
 
         <div class="columns">
             <div class="column">
-                <label for="term-of-trade" class="label is-size-5 is-uppercase"	>Term of Trade</label>
+                <label for="term-of-trade" class="label is-size-5 is-uppercase">Term of Trade</label>
             </div>
             <div class="column">
                 <div class="select is-info is-medium" style="width: 100%;">
@@ -97,7 +97,7 @@
 
         <div class="columns">
             <div class="column">
-                <label for="term-of-payment" class="label is-size-5 is-uppercase"	>Term of Payment</label>
+                <label for="term-of-payment" class="label is-size-5 is-uppercase">Term of Payment</label>
             </div>
             <div class="column">
                 <div class="select is-info is-medium" style="width: 100%;">
@@ -138,8 +138,8 @@
         </div>
         <!-- Officer's Signature Images -->
         <div class="officer-signatures" style="text-align: left;">
-            <img src="../../assets/mrl_sign.jpg" alt="Officer Signature 1" style="width: 300px;">
-            <img src="../../assets/zll_sign.jpg" alt="Officer Signature 2" style="width: 300px;">
+            <img src="../../assets/images/mrl_sign.jpg" alt="Officer Signature 1" style="width: 300px;">
+            <img src="../../assets/images/zll_sign.jpg" alt="Officer Signature 2" style="width: 300px;">
         </div>
     </div>
 </template>
@@ -148,7 +148,7 @@
 export default {
     data() {
         return {
-            countryOfOrigin: 'UNITED STATE OF AMERICA, CHINA, KOREA REPUBLIC OF, VIETNAM, MALAYSIA, BANGLADESH, CHINESE HONGKONG, THAILAND, GERMANY, CHINESE TAIPEI, TURKEY, INDIA, SINGAPORE, INDONESIA, UNITED ARAB EMIRATES, EGYPT',
+            countryOfOriginal: 'UNITED STATE OF AMERICA, CHINA, KOREA REPUBLIC OF, VIETNAM, MALAYSIA, BANGLADESH, CHINESE HONGKONG, THAILAND, GERMANY, CHINESE TAIPEI, TURKEY, INDIA, SINGAPORE, INDONESIA, UNITED ARAB EMIRATES, EGYPT',
             portOfDestination: 'UNITED STATE OF AMERICA, CHINA, KOREA REPUBLIC OF, VIETNAM, MALAYSIA, BANGLADESH, CHINESE HONGKONG, THAILAND, GERMANY, CHINESE TAIPEI, TURKEY, INDIA, SINGAPORE, INDONESIA, UNITED ARAB EMIRATES, EGYPT',
             placeOfDischarge: 'Yangon',
             modeOfTransport: '',
