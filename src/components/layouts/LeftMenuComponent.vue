@@ -7,6 +7,8 @@
       <!-- <li><router-link to="/user" class="is-active">User Management</router-link></li> -->
       <li class="is-size-5 my-5"><router-link to="/invoice">Invoice Management</router-link></li>
       <li class="is-size-5"><router-link to="/contract">Contract Management</router-link></li>
+      <li class="is-size-5"><router-link to="/track/creating">Track Management</router-link></li>
+
     </ul>
   </aside>
 </template>

@@ -16,6 +16,7 @@
     "html2pdf.js": "^0.10.1",
     "json2csv": "^6.0.0-alpha.2",
     "papaparse": "^5.4.1",
+    "uuid": "^9.0.1",
     "vue": "^3.2.13",
     "vue-router": "^4.0.13"
   },
