@@ -16,7 +16,7 @@ export default {
   getTracking(id) {
     return apiClient.get(`/trackings/${id}`);
   },
-  addTracking(trackingInfo) {
+  createTracking(trackingInfo) {
     return apiClient.post('/trackings', trackingInfo);
   },
   updateTracking(id, trackingInfo) {

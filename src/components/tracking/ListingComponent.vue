@@ -3,7 +3,7 @@
     <router-link to="creating" class="button is-link mt-3">Create</router-link>
 
     <div class="container">
-        <h1 class="title">Item Listing</h1>
+        <h1 class="title">Listing</h1>
 
         <!-- Filter input fields -->
         <div class="field is-horizontal">
@@ -11,19 +11,19 @@
                 <label class="label">Filter by:</label>
             </div>
             <div class="field-body">
-                <div class="field">
+                <!-- <div class="field">
                     <div class="control">
                         <input class="input" type="text" v-model="filters.date" placeholder="Date">
                     </div>
-                </div>
+                </div> -->
                 <div class="field">
                     <div class="control">
-                        <input class="input" type="text" v-model="filters.name" placeholder="Company Name">
+                        <input class="input" type="text" v-model="filters.name" placeholder="Name">
                     </div>
                 </div>
                 <div class="field">
                     <div class="control">
-                        <input class="input" type="text" v-model="filters.maccNo" placeholder="ID/ED No."
+                        <input class="input" type="text" v-model="filters.maccNo" placeholder="Maccs No."
                             maxlength="10">
                     </div>
                 </div>
@@ -36,12 +36,13 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Macc (ID/ED) No.</th>
-                    <th>BL/AWB No.</th>
+                    <th>Maccs (ID/ED) No.</th>
+                    <th>BL/ AWB No.</th>
                     <th>Selectively No.</th>
                     <th>No of Packages</th>
                     <th>Place</th>
-                    <th>Status</th>
+                    <th>Item Status</th>
+                    <th>Type</th>
                     <th>Created Date</th>
                     <th>Updated Date</th>
                     <th>Action</th>
@@ -58,7 +59,10 @@
                     <td contenteditable @input="updateCell(index, 'noOfPackages', $event)">{{ item.noOfPackages }}
                     </td>
                     <td contenteditable @input="updateCell(index, 'place', $event)">{{ item.place }}</td>
-                    <td contenteditable @input="updateCell(index, 'status', $event)">{{ item.status }}</td>
+                    <td contenteditable @input="updateCell(index, 'itemStatus', $event)">
+                        {{ getStatusText(item.itemStatus) }}
+                    </td>
+                    <td contenteditable @input="updateCell(index, 'type', $event)">{{ item.type }}</td>
                     <td contenteditable @input="updateCell(index, 'createdDate', $event)">{{
                             formatDate(item.created_date) }}</td>
                     <td contenteditable @input="updateCell(index, 'updatedDate', $event)">{{
@@ -159,6 +163,15 @@ export default {
             this.filteredItems[index][field] = event.target.textContent;
             // Call your service method to update the item in IndexedDB
             // await LocalStorageService.updateItem(this.filteredItems[index].id, { [field]: event.target.textContent });
+        },
+
+        //     updateCell(index, field, event) {
+        //   const value = event.target.innerText;
+        //   // Convert the status text back to its numeric value
+        //   this.items[index][field] = value.toLowerCase() === 'pending' ? 0 : 1;
+        // },
+        getStatusText(status) {
+            return status === 0 ? 'Pending' : 'Completed';
         },
 
 
