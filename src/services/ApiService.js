@@ -1,29 +1,28 @@
 import axios from 'axios';
 
-class ApiService {
-  constructor() {
-    this.api = axios.create({
-      baseURL: 'http://localhost:3000/api' // Replace with your backend API URL
-    });
+const apiClient = axios.create({
+  baseURL: 'http://localhost:5000/api',
+  withCredentials: false,
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json'
   }
+});
 
-  async loginUser(userData) {
-    try {
-      const response = await this.api.post('/login', userData);
-      return response.data;
-    } catch (error) {
-      throw new Error('Error logging in: ' + error.message);
-    }
+export default {
+  getTrackings() {
+    return apiClient.get('/trackings');
+  },
+  getTracking(id) {
+    return apiClient.get(`/trackings/${id}`);
+  },
+  addTracking(trackingInfo) {
+    return apiClient.post('/trackings', trackingInfo);
+  },
+  updateTracking(id, trackingInfo) {
+    return apiClient.put(`/trackings/${id}`, trackingInfo);
+  },
+  deleteTracking(id) {
+    return apiClient.delete(`/trackings/${id}`);
   }
-
-  async registerUser(userData) {
-    try {
-      const response = await this.api.post('/register', userData);
-      return response.data;
-    } catch (error) {
-      throw new Error('Error registering user: ' + error.message);
-    }
-  }
-}
-
-export default new ApiService();
+};

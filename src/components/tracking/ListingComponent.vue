@@ -18,12 +18,12 @@
                 </div>
                 <div class="field">
                     <div class="control">
-                        <input class="input" type="text" v-model="filters.companyName" placeholder="Company Name">
+                        <input class="input" type="text" v-model="filters.name" placeholder="Company Name">
                     </div>
                 </div>
                 <div class="field">
                     <div class="control">
-                        <input class="input" type="text" v-model="filters.idEdNo" placeholder="ID/ED No."
+                        <input class="input" type="text" v-model="filters.maccNo" placeholder="ID/ED No."
                             maxlength="10">
                     </div>
                 </div>
@@ -35,7 +35,7 @@
         <table class="table is-fullwidth">
             <thead>
                 <tr>
-                    <th>Company Name</th>
+                    <th>Name</th>
                     <th>Macc (ID/ED) No.</th>
                     <th>BL/AWB No.</th>
                     <th>Selectively No.</th>
@@ -50,20 +50,22 @@
             </thead>
             <tbody>
                 <tr v-for="(item, index) in filteredItems" :key="index">
-                    <td contenteditable @input="updateCell(index, 'companyName', $event)">{{ item.companyName }}</td>
-                    <td contenteditable @input="updateCell(index, 'idEdNo', $event)">{{ item.idEdNo }}</td>
-                    <td contenteditable @input="updateCell(index, 'blAwb', $event)">{{ item.blAwb }}</td>
+                    <td contenteditable @input="updateCell(index, 'name', $event)">{{ item.name }}</td>
+                    <td contenteditable @input="updateCell(index, 'maccNo', $event)">{{ item.maccNo }}</td>
+                    <td contenteditable @input="updateCell(index, 'blNo', $event)">{{ item.blNo }}</td>
                     <td contenteditable @input="updateCell(index, 'selectivelyNo', $event)">{{ item.selectivelyNo }}
                     </td>
-                    <td contenteditable @input="updateCell(index, 'noOfPackage', $event)">{{ item.noOfPackage }}
+                    <td contenteditable @input="updateCell(index, 'noOfPackages', $event)">{{ item.noOfPackages }}
                     </td>
                     <td contenteditable @input="updateCell(index, 'place', $event)">{{ item.place }}</td>
                     <td contenteditable @input="updateCell(index, 'status', $event)">{{ item.status }}</td>
-                    <td contenteditable @input="updateCell(index, 'createdDate', $event)">{{ formatDate(item.createdDate) }}</td>
-                    <td contenteditable @input="updateCell(index, 'updatedDate', $event)">{{ formatDate(item.updatedDate) }}</td>
+                    <td contenteditable @input="updateCell(index, 'createdDate', $event)">{{
+                            formatDate(item.created_date) }}</td>
+                    <td contenteditable @input="updateCell(index, 'updatedDate', $event)">{{
+                            formatDate(item.updated_date) }}</td>
 
                     <td>
-                        <button @click="deleteItem(item, index)" class="button is-danger is-small">
+                        <button @click="deleteItem(item._id, index)" class="button is-danger is-small">
                             <span class="icon">
                                 <i class="fas fa-trash"></i>
                             </span>
@@ -77,15 +79,16 @@
 </template>
 
 <script>
-import LocalStorageService from '../../services/LocalStorageService';
+import ApiService from '@/services/ApiService';
+// import LocalStorageService from '../../services/LocalStorageService';
 
 export default {
     data() {
         return {
             items: [], // Initialize as an empty array
             filters: {
-                companyName: '',
-                idEdNo: '',
+                name: '',
+                maccNo: '',
                 // Add more filter fields as needed
             }
         };
@@ -98,15 +101,45 @@ export default {
                 return [];
             }
 
-            const { companyName, idEdNo } = this.filters;
+            const { name, maccNo } = this.filters;
             return this.items.filter(item =>
-                item.companyName.toLowerCase().includes(companyName.toLowerCase()) &&
-                String(item.idEdNo).includes(idEdNo)
+                item.name.toLowerCase().includes(name.toLowerCase()) &&
+                String(item.maccNo).includes(maccNo)
                 // Add more filter conditions as needed
             );
         }
     },
+
+    async created() {
+
+        this.fetchTrackings()
+        // Fetch items from LocalStorageService when the component is created
+        // const items = await LocalStorageService.getItems();
+        // this.items = Array.isArray(items) ? items : []; // Ensure items is an array
+    },
     methods: {
+
+        async fetchTrackings() {
+            try {
+                const response = await ApiService.getTrackings();
+                this.items = response.data;
+            } catch (error) {
+                console.error(error);
+            }
+        },
+
+        async deleteItem(id, index) {
+            this.items.splice(index, 1);
+            console.log('Deleted Item', index, id);
+            // LocalStorageService.removeItem(item.id);
+            try {
+                await ApiService.deleteTracking(id);
+                this.fetchTrackings();
+            } catch (error) {
+                console.error(error);
+            }
+        },
+
 
         formatDate(dateString) {
             const indexOfT = dateString.indexOf('T');
@@ -125,23 +158,14 @@ export default {
 
             this.filteredItems[index][field] = event.target.textContent;
             // Call your service method to update the item in IndexedDB
-            await LocalStorageService.updateItem(this.filteredItems[index].id, { [field]: event.target.textContent });
+            // await LocalStorageService.updateItem(this.filteredItems[index].id, { [field]: event.target.textContent });
         },
 
-        deleteItem(item, index) {
-            this.items.splice(index, 1);
-            console.log('Deleted Item', index, item.id);
-            LocalStorageService.removeItem(item.id);
-        }
+
 
 
 
     },
-    async created() {
-        // Fetch items from IndexedDB when the component is created
-        const items = await LocalStorageService.getItems();
-        this.items = Array.isArray(items) ? items : []; // Ensure items is an array
-    }
 };
 
 </script>
