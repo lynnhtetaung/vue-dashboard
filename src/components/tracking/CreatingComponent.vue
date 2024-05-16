@@ -10,7 +10,8 @@
                     </div>
                     <div class="column">
                         <div class="control">
-                            <input class="input" type="text" v-model="trackingInfo.name" required>
+                            <input class="input" type="text" v-model="trackingInfo.name"
+                                placeholder="Nan Taw Win Co.,Ltd" required>
                         </div>
                     </div>
                     <div class="column">
@@ -18,7 +19,8 @@
                     </div>
                     <div class="column">
                         <div class="control">
-                            <input class="input" type="text" v-model="trackingInfo.maccNo" maxlength="10" required>
+                            <input class="input" type="text" v-model="trackingInfo.maccNo" maxlength="10"
+                                placeholder="1234567890" required>
                         </div>
                     </div>
                 </div>
@@ -27,11 +29,12 @@
             <div class="field">
                 <div class="columns">
                     <div class="column">
-                        <label class="label">BL No./AWB No.</label>
+                        <label class="label">BL No. (AWB No.)</label>
                     </div>
                     <div class="column">
                         <div class="control">
-                            <input class="input" type="text" maxlength="10" v-model="trackingInfo.blNo" required>
+                            <input class="input" type="text" maxlength="10" v-model="trackingInfo.blNo"
+                                placeholder="1234567890" required>
                         </div>
                     </div>
                     <div class="column">
@@ -41,7 +44,7 @@
                         <div class="control">
                             <div class="select is-info is-medium" style="width: 100%;">
                                 <select v-model="trackingInfo.selectivelyNo" style="width: 100%;">
-                                    <option value="2">2</option>
+                                    <option value="2" selected>2</option>
                                     <option value="3">3</option>
                                 </select>
                             </div>
@@ -57,15 +60,17 @@
                     </div>
                     <div class="column">
                         <div class="control">
-                            <input class="input" type="text" v-model="trackingInfo.noOfPackages" maxlength="6" required>
+                            <input class="input" type="text" v-model="trackingInfo.noOfPackages" maxlength="6"
+                                placeholder="20" required>
                         </div>
                     </div>
                     <div class="column">
-                        <label class="label">Place</label>
+                        <label class="label">Port</label>
                     </div>
                     <div class="column">
                         <div class="control">
-                            <input class="input" type="text" v-model="trackingInfo.place" required>
+                            <input class="input" type="text" v-model="trackingInfo.place" placeholder="MIT, AWPT"
+                                required>
                         </div>
                     </div>
                 </div>
@@ -80,8 +85,8 @@
                         <div class="control">
                             <div class="select is-info is-medium" style="width: 100%;">
                                 <select id="itemStatus" v-model="trackingInfo.itemStatus" style="width: 100%;">
-                                    <option value="pending">Pending</option>
-                                    <option value="complete">Complete</option>
+                                    <option value="pending">pending</option>
+                                    <option value="completed">completed</option>
                                 </select>
                             </div>
                         </div>
@@ -104,7 +109,12 @@
 
             <div class="field">
                 <div class="control">
-                    <button class="button is-primary m-3">Create</button>
+                    <button class="button is-primary m-3">
+                        <span class="icon">
+                            <i class="fas fa-plus-circle"></i>
+                        </span>
+                        <span>Create</span>
+                    </button>
                 </div>
             </div>
         </form>
@@ -123,11 +133,11 @@ export default {
                 name: '',
                 maccNo: null,
                 blNo: null,
-                selectivelyNo: null,
+                selectivelyNo: 2,
                 noOfPackages: null,
                 place: '',
-                itemStatus: '',
-                type: '',
+                itemStatus: 'pending',
+                type: 'import',
                 status: 'active',
                 created_by: 'khin',
                 created_date: new Date().toISOString(),

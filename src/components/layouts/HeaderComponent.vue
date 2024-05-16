@@ -1,15 +1,20 @@
 <template>
   <div class="header">
-    <nav>
-      <ul :class="{ 'open': isMenuOpen }" class="menu" style="text-align: center;"> <!-- Apply 'open' class when menu is open -->
-        <li class="is-size-5">
-          <router-link to="/">Home</router-link>
-        </li>
-        <!-- <li class="is-size-5"><router-link to="/register"> Register</router-link></li> -->
-        <!-- Add more navigation links as needed -->
-      </ul>
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <button class="navbar-burger" @click="toggleMenu" :class="{ 'is-active': isMenuOpen }" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div :class="{ 'is-active': isMenuOpen }" class="navbar-menu">
+        <div class="navbar-start">
+          <router-link class="navbar-item" to="/">Home</router-link>
+          <!-- Add more navigation links as needed -->
+        </div>
+      </div>
     </nav>
-    <button class="hamburger-menu" @click="toggleMenu">&#9776;</button> <!-- Remove 'v-show' directive -->
   </div>
 </template>
 
@@ -35,56 +40,38 @@ export default {
 </script>
 
 <style scoped>
-/* Header styles */
 .header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: #333;
   color: #fff;
-  padding: 20px;
 }
 
-.menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: center; /* Center the list horizontally */
-  display: flex;
+.navbar {
+  background-color: #333; /* Override Bulma's primary color */
 }
 
-.menu li {
-  padding-right: 20px;
+.navbar-item {
+  color: #fff !important; /* Ensure the text is white */
 }
 
-.menu li:last-child {
-  padding-right: 0; /* Remove padding from the last menu item */
+.navbar-item:hover {
+  background-color: #444; /* Darken the background on hover */
 }
 
-.menu li a {
+.navbar-burger {
   color: #fff;
-  text-decoration: none;
 }
 
-.menu li a:hover {
-  text-decoration: underline;
-}
-
-.hamburger-menu {
-  display: none; /* Initially hide the hamburger menu button */
+.navbar-menu.is-active {
+  display: block; /* Ensure the menu is shown when active */
 }
 
 /* Media query for mobile devices */
 @media (max-width: 768px) {
-  .hamburger-menu {
-    display: block; /* Show the hamburger menu button on small screens */
-  }
-
-  .header nav ul {
+  .navbar-menu {
     display: none; /* Hide the navigation links on small screens */
   }
 
-  .header nav ul.open {
+  .navbar-menu.is-active {
     display: block; /* Show the navigation links when the menu is open */
   }
 }
