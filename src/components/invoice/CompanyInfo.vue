@@ -1,7 +1,7 @@
 <template>
 
     <div class="company-info is-size-4 has-text-weight-bold mb-5">
-        INVOICE MANAGEMENT
+        License Application
     </div>
     <!-- <div class="company-info is-size-4 has-text-weight-bold">
         <p>{{ companyName }}</p>

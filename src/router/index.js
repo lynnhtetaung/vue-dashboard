@@ -6,6 +6,8 @@ import ProfileComponent from '@/components/ProfileComponent.vue';
 import InvoiceComponent from '@/components/invoice/InvoiceComponent.vue';
 import CreatingComponent from '@/components/tracking/CreatingComponent.vue';
 import ListingComponent from '@/components/tracking/ListingComponent.vue';
+import ExportItemComponent from '@/components/export/ExportItemComponent.vue';
+
 
 
 import { useAuth } from '../services/auth';
@@ -26,6 +28,11 @@ const routes = [
     path: '/invoice',
     name: 'InvoiceComponent',
     component: InvoiceComponent,
+  },
+  {
+    path: '/export_item',
+    name: 'ExportItemComponent',
+    component: ExportItemComponent,
   },
   {
     path: '/track/creating',

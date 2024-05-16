@@ -2,13 +2,13 @@
   <aside class="menu">
     <ul class="menu-list">
       <li class="is-size-5 my-5">
-        <router-link to="/invoice" class="router-link">Invoice Management</router-link>
+        <router-link to="/invoice" class="router-link">Import Management</router-link>
       </li>
       <li class="is-size-5">
-        <router-link to="/contract" class="router-link">Contract Management</router-link>
+        <router-link to="/export_item" class="router-link">Export Management</router-link>
       </li>
       <li class="is-size-5">
-        <router-link to="/track/listing" class="router-link">Track Management</router-link>
+        <router-link to="/track/listing" class="router-link">Tracking Management</router-link>
       </li>
     </ul>
   </aside>

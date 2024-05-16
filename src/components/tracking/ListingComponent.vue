@@ -57,17 +57,17 @@
             <table class="table is-bordered is-hoverable is-fullwidth">
                 <thead>
                     <tr class="is-secondary">
-                        <th class="is-size-5">Name</th>
-                        <th class="is-size-5">Maccs (ID/ED) No.</th>
-                        <th class="is-size-5">BL/ AWB No.</th>
-                        <th class="is-size-5">Selectively No.</th>
-                        <th class="is-size-5">No of Packages</th>
-                        <th class="is-size-5">Place</th>
-                        <th class="is-size-5">Status</th>
-                        <th class="is-size-5">Type</th>
-                        <th class="is-size-5">Created Date</th>
-                        <th class="is-size-5">Updated Date</th>
-                        <th class="is-size-5">Action</th>
+                        <th>Name</th>
+                        <th>Maccs (ID/ED) No.</th>
+                        <th>BL/ AWB No.</th>
+                        <th>Selectively No.</th>
+                        <th>No of Packages</th>
+                        <th>Place</th>
+                        <th>Status</th>
+                        <th>Type</th>
+                        <th>Created Date</th>
+                        <th>Updated Date</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -88,17 +88,17 @@
                         <td contenteditable @input="updateCell(index, 'updatedDate', $event)">{{
                             formatDate(item.updated_date) }}</td>
                         <td>
-                            <button @click="updateItem(item, index)" class="button is-primary is-small">
+                            <button @click="updateItem(item, index)" class="button is-primary is-small mr-3">
                                 <span class="icon">
                                     <i class="fas fa-edit"></i>
                                 </span>
-                                <span>Update</span>
+                                <!-- <span>Update</span> -->
                             </button>
                             <button @click="deleteItem(item._id, index)" class="button is-danger is-small">
                                 <span class="icon">
                                     <i class="fas fa-trash"></i>
                                 </span>
-                                <span>Delete</span>
+                                <!-- <span>Delete</span> -->
                             </button>
                         </td>
                     </tr>
