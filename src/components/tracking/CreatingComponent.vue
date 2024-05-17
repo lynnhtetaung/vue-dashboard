@@ -92,7 +92,7 @@
                             <div class="column">
                                 <div class="control">
                                     <input class="input" type="text" v-model="trackingInfo.place"
-                                        placeholder="MIT, AWPT" required>
+                                        placeholder="MITT, MIP, AWPT" required>
                                 </div>
                             </div>
                         </div>

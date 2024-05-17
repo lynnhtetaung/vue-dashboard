@@ -3,7 +3,12 @@
     <div class="container">
         <!-- <h1 class="title">Listing</h1> -->
 
-        <div class="field is-horizontal">
+       
+
+        <!-- Table -->
+        <div class="table-container">
+
+            <div class="field is-horizontal">
             <router-link to="creating" class="button is-link mt-3"><span class="icon">
                     <i class="fas fa-plus-circle"></i>
                 </span>
@@ -51,9 +56,7 @@
                 <!-- Add more filter fields as needed -->
             </div>
         </div>
-
-        <!-- Table -->
-        <div class="table-container">
+        
             <table class="table is-bordered is-hoverable is-fullwidth">
                 <thead>
                     <tr class="is-secondary">
